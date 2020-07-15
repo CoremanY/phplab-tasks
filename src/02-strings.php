@@ -53,7 +53,7 @@ function mirrorMultibyteString(string $input)
  * @param  string  $noun
  * @return string
  */
-function getBandName(string $noun)
+function getBrandName(string $noun)
 {
     $firstLetter = $noun[0];
     $lastLetter = $noun[strlen($noun) - 1];
