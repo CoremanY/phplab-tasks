@@ -18,8 +18,6 @@ function snakeCaseToCamelCase(string $input, $capitalizeFirst = false)
 
     return $str;
 }
-$input = 'this_is_a_camelcase';
-echo snakeCaseToCamelCase($input);
 
 /**
  * The $input variable contains multibyte text like 'ФЫВА олдж'
@@ -39,8 +37,6 @@ function mirrorMultibyteString(string $input)
     }
     return implode(' ', $wordsMir);
 }
-$input = 'ФЫВА олдж';
-echo mirrorMultibyteString($input);
 
 
 /**
