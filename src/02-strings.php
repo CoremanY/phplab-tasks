@@ -59,9 +59,9 @@ function getBandName(string $noun)
     $lastLetter = $noun[strlen($noun) - 1];
 
     if ($firstLetter == $lastLetter) {
-        $BandName = ucfirst($noun) . substr($noun, 1);
+        $bandName = ucfirst($noun) . substr($noun, 1);
     } else {
-        $BandName = 'The ' . ucfirst($noun);
+        $bandName = 'The ' . ucfirst($noun);
     }
-    return $BandName;
+    return $bandName;
 }
