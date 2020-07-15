@@ -19,7 +19,7 @@ function getMinuteQuarter(int $minute)
         return "second";
     } elseif ($minute >= 31 && $minute <= 45) {
         return "third";
-    } elseif ($minute >= 46 && $minute <= 60) {
+    } elseif ($minute >= 46 && $minute <= 60 || $minute == 0) {
         return "fourth";
     } else {
         throw new InvalidArgumentException();
@@ -67,7 +67,7 @@ function isLeapYear(int $year)
  */
 function isSumEqual(string $input)
 {
-    if (strlen($input) > 6) {
+    if (strlen($input) !==6) {
         throw new InvalidArgumentException();
     }
     $subStrLeft = substr($input, 0, strlen($input) / 2);
