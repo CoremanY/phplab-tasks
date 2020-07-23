@@ -8,16 +8,14 @@
  * @param  string  $input
  * @return string
  */
-function snakeCaseToCamelCase(string $input, $capitalizeFirst = false)
+function snakeCaseToCamelCase(string $input)
 {
-    $str = str_replace('_', '', ucwords($input, '_'));
 
-    if (!$capitalizeFirst) {
-        $str = lcfirst($str);
-    }
-
-    return $str;
+    return lcfirst(str_replace(' ', '', ucwords(str_replace('_', ' ', $input))));
 }
+
+
+
 
 /**
  * The $input variable contains multibyte text like 'ФЫВА олдж'
@@ -35,6 +33,7 @@ function mirrorMultibyteString(string $input)
         preg_match_all('/./us', $word, $arr);
         $wordsMir[] = join('', array_reverse($arr[0]));
     }
+    
     return implode(' ', $wordsMir);
 }
 
@@ -63,5 +62,6 @@ function getBrandName(string $noun)
     } else {
         $bandName = 'The ' . ucfirst($noun);
     }
+    
     return $bandName;
 }
