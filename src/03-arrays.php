@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The $input variable contains an array of digits
  * Return an array which will contain the same digits but repetitive by its value
@@ -10,6 +11,15 @@
  */
 function repeatArrayValues(array $input)
 {
+    $new_array = [];
+    foreach ($input as $element) {
+        $i = 0;
+        while ($i < $element) {
+            $new_array[] = $element;
+            $i++;
+        }
+    }
+    return $new_array;
 }
 
 /**
@@ -22,6 +32,15 @@ function repeatArrayValues(array $input)
  */
 function getUniqueValue(array $input)
 {
+    $removeRepeating = array_unique($input); 
+    $arrayCheck = array_diff_assoc($input, $removeRepeating); 
+    $unValueArray = array_diff($input, array_unique($arrayCheck)); 
+ 
+    if (empty($input) || empty($unValueArray)) { 
+        return 0; 
+    } 
+ 
+    return min($unValueArray);
 }
 
 /**
@@ -50,4 +69,14 @@ function getUniqueValue(array $input)
  */
 function groupByTag(array $input)
 {
+    array_multisort($input);
+    $new_array = [];
+    foreach ($input as $element) {
+        foreach ($element['tags'] as $tag) {
+            $new_array[$tag][] = $element['name'];
+        }
+    }
+    ksort($new_array);
+
+    return $new_array;
 }

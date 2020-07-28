@@ -4,7 +4,7 @@
  * The $minute variable contains a number from 0 to 59 (i.e. 10 or 25 or 60 etc).
  * Determine in which quarter of an hour the number falls.
  * Return one of the values: "first", "second", "third" and "fourth".
- * Throw InvalidArgumentException if $minute is negative of greater then 60.1
+ * Throw InvalidArgumentException if $minute is negative of greater then 60.
  * @see https://www.php.net/manual/en/class.invalidargumentexception.php
  *
  * @param  int  $minute
@@ -13,6 +13,17 @@
  */
 function getMinuteQuarter(int $minute)
 {
+    if ($minute >= 1 && $minute <= 15) {
+        return "first";
+    } elseif ($minute >= 16 && $minute <= 30) {
+        return "second";
+    } elseif ($minute >= 31 && $minute <= 45) {
+        return "third";
+    } elseif ($minute >= 46 && $minute <= 60 || $minute == 0) {
+        return "fourth";
+    } else {
+        throw new InvalidArgumentException();
+    }
 }
 
 /**
@@ -28,6 +39,18 @@ function getMinuteQuarter(int $minute)
  */
 function isLeapYear(int $year)
 {
+    if ($year < 1900) {
+        throw new InvalidArgumentException();
+    }
+    if ($year % 4 != 0) {
+        return false;
+    } elseif ($year % 400 == 0) {
+        return true;
+    } elseif ($year % 100 == 0) {
+        return false;
+    } else {
+        return true;
+    }
 }
 
 
@@ -44,4 +67,23 @@ function isLeapYear(int $year)
  */
 function isSumEqual(string $input)
 {
+    if (strlen($input) !==6) {
+        throw new InvalidArgumentException();
+    }
+    $subStrLeft = substr($input, 0, strlen($input) / 2);
+    $subStrRight = substr($input, strlen($input) / 2);
+
+    $suml = 0;
+    $sumr = 0;
+
+    for ($i = 0; $i < strlen($input) / 2; $i++) {
+        $suml += $subStrLeft[$i];
+        $sumr += $subStrRight[$i];
+    }
+
+    if ($suml == $sumr) {
+        return true;
+    } else {
+        return false;
+    }
 }

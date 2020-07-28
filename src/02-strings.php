@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The $input variable contains text in snake case (i.e. hello_world or this_is_home_task)
  * Transform it into camel cased string and return (i.e. helloWorld or thisIsHomeTask)
@@ -9,7 +10,12 @@
  */
 function snakeCaseToCamelCase(string $input)
 {
+
+    return lcfirst(str_replace(' ', '', ucwords(str_replace('_', ' ', $input))));
 }
+
+
+
 
 /**
  * The $input variable contains multibyte text like 'ФЫВА олдж'
@@ -21,7 +27,16 @@ function snakeCaseToCamelCase(string $input)
  */
 function mirrorMultibyteString(string $input)
 {
+    $words = explode(' ', $input);
+    $wordsMir = [];
+    foreach ($words as $word) {
+        preg_match_all('/./us', $word, $arr);
+        $wordsMir[] = join('', array_reverse($arr[0]));
+    }
+    
+    return implode(' ', $wordsMir);
 }
+
 
 /**
  * My friend wants a new band name for her band.
@@ -39,4 +54,14 @@ function mirrorMultibyteString(string $input)
  */
 function getBrandName(string $noun)
 {
+    $firstLetter = $noun[0];
+    $lastLetter = $noun[strlen($noun) - 1];
+
+    if ($firstLetter == $lastLetter) {
+        $bandName = ucfirst($noun) . substr($noun, 1);
+    } else {
+        $bandName = 'The ' . ucfirst($noun);
+    }
+    
+    return $bandName;
 }
