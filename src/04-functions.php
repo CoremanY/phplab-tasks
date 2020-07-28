@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Create a PhpUnit test (SayHelloTest) which will check that function below returns a correct result
  * i.e. returns 'Hello'
@@ -35,7 +36,9 @@ function sayHelloArgument($arg)
  */
 function sayHelloArgumentWrapper($arg)
 {
-    // put your code here
+    if (!is_numeric($arg) || !is_string($arg) || !is_bool($arg)) {
+        throw new InvalidArgumentException('As parameter use number, string or bool');
+    }
 
     return sayHelloArgument($arg);
 }
@@ -69,5 +72,10 @@ function countArguments()
  */
 function countArgumentsWrapper()
 {
-    // put your code here
+    foreach (func_get_args() as $arg) {
+        if (!is_string($arg))
+            throw new InvalidArgumentException("Param is not a string");
+    }
+    
+    return countArguments();
 }
