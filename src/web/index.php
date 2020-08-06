@@ -33,8 +33,7 @@ if (isset($_GET['filter_by_state'])) {
 
 if (isset($_GET['sort'])) {
     $sortKey = $_GET['sort'];
-    usort($airports, function($a, $b) use ($sortKey) {
-        
+    usort($airports, function ($a, $b) use ($sortKey) {
 
         return $a[$sortKey] <=> $b[$sortKey];
     });
