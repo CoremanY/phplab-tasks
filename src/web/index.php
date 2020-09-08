@@ -73,7 +73,6 @@ $airports = array_slice($airports, ($page - 1) * PER_PAGE, PER_PAGE);
         Filtering task #1
         Replace # in HREF attribute so that link follows to the same page with the filter_by_first_letter key
         i.e. /?filter_by_first_letter=A or /?filter_by_first_letter=B
-
         Make sure, that the logic below also works:
          - when you apply filter_by_first_letter the page should be equal 1
          - when you apply filter_by_first_letter, than filter_by_state (see Filtering task #2) is not reset
@@ -93,7 +92,6 @@ $airports = array_slice($airports, ($page - 1) * PER_PAGE, PER_PAGE);
         Sorting task
         Replace # in HREF so that link follows to the same page with the sort key with the proper sorting value
         i.e. /?sort=name or /?sort=code etc
-
         Make sure, that the logic below also works:
          - when you apply sorting pagination and filtering are not reset
            i.e. if you already have /?page=2&filter_by_first_letter=A after applying sorting the url should looks like
@@ -115,7 +113,6 @@ $airports = array_slice($airports, ($page - 1) * PER_PAGE, PER_PAGE);
             Filtering task #2
             Replace # in HREF so that link follows to the same page with the filter_by_state key
             i.e. /?filter_by_state=A or /?filter_by_state=B
-
             Make sure, that the logic below also works:
              - when you apply filter_by_state the page should be equal 1
              - when you apply filter_by_state, than filter_by_first_letter (see Filtering task #1) is not reset
@@ -137,7 +134,6 @@ $airports = array_slice($airports, ($page - 1) * PER_PAGE, PER_PAGE);
         <!--
         Pagination task
         Replace HTML below so that it shows real pages dependently on number of airports after all filters applied
-
         Make sure, that the logic below also works:
          - show 5 airports per page
          - use page key (i.e. /?page=1)

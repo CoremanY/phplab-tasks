@@ -20,4 +20,3 @@ function getUniqueFirstLetters(array $airports)
 
     return $letters;
 }
-
